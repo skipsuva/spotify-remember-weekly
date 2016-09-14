@@ -8,6 +8,8 @@ Bundler.require(*Rails.groups)
 
 module SpotifyRememberWeekly
   class Application < Rails::Application
+
+    RSpotify::authenticate(ENV['SPOTIFY_CLIENT_ID'], ENV['SPOTIFY_CLIENT_SECRET'])
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -21,7 +23,6 @@ module SpotifyRememberWeekly
     # config.i18n.default_locale = :de
 
 
-    # RSpotify::authenticate(ENV['SPOTIFY_CLIENT_ID'], ENV['SPOTIFY_CLIENT_SECRET'])
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
