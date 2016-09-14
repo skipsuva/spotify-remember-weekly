@@ -11,12 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160914154437) do
+ActiveRecord::Schema.define(version: 20160914162633) do
 
-  create_table "users_tables", force: :cascade do |t|
-    t.string  "name"
-    t.integer "spotify_id"
-    t.string  "spotify_access_token"
+  create_table "playlists", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "spotify_id"
+    t.datetime "date"
   end
+
+# Could not dump table "users" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
 end
