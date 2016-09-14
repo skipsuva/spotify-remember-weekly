@@ -29,7 +29,9 @@ gem 'pg'
 
 gem 'pry'
 
-gem 'react-rails', github: 'reactjs/react-rails'
+# gem 'react-rails', github: 'reactjs/react-rails'
+
+gem "react_on_rails", "~> 6"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
