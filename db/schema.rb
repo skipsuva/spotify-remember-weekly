@@ -19,7 +19,11 @@ ActiveRecord::Schema.define(version: 20160914162633) do
     t.datetime "date"
   end
 
-# Could not dump table "users" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
+  create_table "users", force: :cascade do |t|
+    t.string  "name"
+    t.integer "spotify_id"
+    t.string  "spotify_access_token"
+    t.text    "spotify_user_hash"
+  end
 
 end
