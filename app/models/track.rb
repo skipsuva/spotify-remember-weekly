@@ -19,4 +19,7 @@ class Track < ActiveRecord::Base
     binding.pry
   end
 
+  def join_artist_names(artists_array)
+
+  end
 end

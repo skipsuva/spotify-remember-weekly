@@ -4,18 +4,18 @@ class UsersController < ApplicationController
     @spotify_user_response = RSpotify::User.new(request.env['omniauth.auth'])
 
     @user = User.find_or_initialize_by(
-      name: @spotify_user_response.display_name,
-      spotify_id: @spotify_user_response.id,
-      spotify_access_token: @spotify_user_response.credentials.token
+      spotify_id: @spotify_user_response.id
     )
-
+    binding.pry
     if !@user.persisted?
-      @user.spotify_user_hash = @spotify_user_response.to_json
-      @user.save!
+      @user.name = @spotify_user_response.display_name
     end
 
+    @user.spotify_access_token = @spotify_user_response.credentials.token
+    @user.spotify_user_hash = @spotify_user_response.to_json
+    @user.save!
     # get most recent playlist unless it already exists for this week...
-    get_most_recent_playlist
+    # get_most_recent_playlist
 
     redirect_to user_playlists_path(@user.id)
   end
