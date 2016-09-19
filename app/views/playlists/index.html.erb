@@ -1,1 +1,9 @@
-<h1>Hambone city</h1>
+<h1><%= @user.name %>'s Playlists</h1>
+<% @playlists.each do |playlist| %>
+  <h3>Discover Weekly: <%= playlist.display_date%></h3>
+  <ul>
+    <% playlist.tracks.each do |track| %>
+      <li><%= track.title %>, <%= track.artist %></li>
+    <% end %>
+  </ul>
+<% end %>

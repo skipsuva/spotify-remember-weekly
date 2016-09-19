@@ -1,5 +1,6 @@
 class Playlist < ActiveRecord::Base
   belongs_to :user
+  has_many :tracks
 
   def self.find_or_create_by_response_data(user, playlist_data)
     new_playlist = self.find_or_initialize_by(spotify_id: playlist_data.id)
@@ -9,6 +10,10 @@ class Playlist < ActiveRecord::Base
 
     new_playlist.save!
 
-    Track.find_or_create_by_response_data(playlist_data.tracks)
+    Track.find_or_create_by_response_data(new_playlist.id, playlist_data.tracks)
+  end
+
+  def display_date
+    date.strftime('%F')
   end
 end
